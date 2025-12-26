@@ -98,4 +98,4 @@ cd nama-repository
 
 Jalankan program:
 
-python main.py
+python mini_scene_2d.py
