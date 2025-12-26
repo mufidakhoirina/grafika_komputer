@@ -1,0 +1,102 @@
+Deskripsi Proyek
+
+Proyek ini merupakan aplikasi grafika komputer 2D sederhana yang dibuat menggunakan Python dan Tkinter.
+Aplikasi menampilkan mini scene berupa rumah dan danau dengan animasi dan interaksi, serta menerapkan algoritma grafika manual tanpa menggunakan library grafika siap pakai seperti turtle atau pygame.
+
+Proyek ini dibuat untuk memenuhi tugas UAS mata kuliah Grafika Komputer.
+
+- Fitur Mini Scene
+
+Objek dan animasi yang terdapat pada aplikasi ini meliputi:
+
+Rumah yang berada di atas daratan
+
+Danau di sisi kanan rumah
+
+Bunga di pinggir danau
+
+Refleksi rumah dan bunga di permukaan danau
+
+Matahari dengan sinar yang berputar
+
+Awan yang bergerak dari kiri ke kanan
+
+Interaksi keyboard untuk memperbesar objek
+- Algoritma yang Digunakan
+️1. Algoritma Garis (DDA – Digital Differential Analyzer)
+
+Digunakan untuk menggambar:
+
+Sinar matahari
+
+Batang bunga
+
+Garis tepi danau
+
+Garis digambar secara manual dengan perhitungan koordinat piksel.
+
+️2. Algoritma Lingkaran (Midpoint Circle Algorithm)
+
+Digunakan untuk menggambar:
+
+Matahari
+
+Awan
+
+Kepala bunga
+
+3. Algoritma Poligon
+
+Digunakan untuk membentuk:
+
+Badan rumah
+
+Atap rumah
+
+Daratan
+
+Danau
+
+Pengisian warna poligon dilakukan menggunakan scan line algorithm sederhana.
+
+4. Transformasi Geometris 2D
+
+Aplikasi ini menerapkan beberapa transformasi geometris, yaitu:
+
+Translasi → Pergerakan awan
+
+Rotasi → Perputaran sinar matahari
+
+Skala → Pembesaran rumah dan bunga menggunakan input keyboard
+
+Refleksi → Bayangan rumah dan bunga di permukaan danau dan daratan
+
+- Kontrol Keyboard
+Tombol	Fungsi
+SPACE	Memperbesar objek (skala)
+R	Mengembalikan ukuran objek ke semula
+
+- Teknologi yang Digunakan
+
+Python 3
+
+Tkinter
+
+Algoritma Grafika Komputer Manual
+
+- Cara Menjalankan Program
+
+Pastikan Python 3 sudah terinstall
+
+Clone repository ini:
+
+git clone https://github.com/username/nama-repository.git
+
+
+Masuk ke folder project:
+
+cd nama-repository
+
+Jalankan program:
+
+python main.py
