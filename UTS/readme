@@ -1,101 +1,95 @@
-Deskripsi Proyek
+Mini Scene 2D - Rumah & Danau (Tkinter)
 
-Proyek ini merupakan aplikasi grafika komputer 2D sederhana yang dibuat menggunakan Python dan Tkinter.
-Aplikasi menampilkan mini scene berupa rumah dan danau dengan animasi dan interaksi, serta menerapkan algoritma grafika manual tanpa menggunakan library grafika siap pakai seperti turtle atau pygame.
+Project ini merupakan aplikasi grafika komputer 2D menggunakan Python Tkinter Canvas yang menampilkan mini scene berupa langit, awan bergerak, matahari berputar, rumah, danau, serta bunga dengan refleksi.
+Scene dibuat menggunakan implementasi algoritma grafika dasar seperti DDA Line, Midpoint Circle, dan Polygon Fill, serta menerapkan transformasi translasi, skala, rotasi, refleksi.
 
-Proyek ini dibuat untuk memenuhi tugas UAS mata kuliah Grafika Komputer.
+Tampilan scene menampilkan:
 
-- Fitur Mini Scene
+✅ Langit (background light blue)
+✅ Matahari dengan sinar yang berputar
+✅ Awan bergerak ke samping (animasi translasi)
+✅ Daratan hijau
+✅ Danau berwarna biru
+✅ Rumah (badan, atap, pintu, jendela)
+✅ Bunga di tepi danau
+✅ Refleksi rumah dan bunga pada permukaan air
 
-Objek dan animasi yang terdapat pada aplikasi ini meliputi:
+Kontrol Keyboard
+Tombol	Fungsi
+SPACE	Zoom in (memperbesar objek rumah & bunga)
+R	Reset zoom ke ukuran normal
+Close Window (X)	Menghentikan animasi & menutup program
+ Cara Menjalankan Program
+1) Pastikan Python terinstall
 
-Rumah yang berada di atas daratan
+Cek versi Python:
 
-Danau di sisi kanan rumah
+python --version
 
-Bunga di pinggir danau
+2) Jalankan File Program
 
-Refleksi rumah dan bunga di permukaan danau
+Misalnya file disimpan dengan nama mini_scene.py
 
-Matahari dengan sinar yang berputar
+python mini_scene.py
 
-Awan yang bergerak dari kiri ke kanan
+Tkinter sudah bawaan Python, jadi tidak perlu install library tambahan.
 
-Interaksi keyboard untuk memperbesar objek
-- Algoritma yang Digunakan
-️1. Algoritma Garis (DDA – Digital Differential Analyzer)
+ Penjelasan Algoritma yang Digunakan
+1. Algoritma Garis DDA (Digital Differential Analyzer)
 
-Digunakan untuk menggambar:
+Digunakan untuk membuat objek garis seperti:
 
 Sinar matahari
 
 Batang bunga
 
-Garis tepi danau
+Metode bekerja dengan menghitung dx, dy lalu menentukan jumlah langkah (steps) untuk menggambar garis per titik pixel.
 
-Garis digambar secara manual dengan perhitungan koordinat piksel.
+2. Algoritma Lingkaran Midpoint
 
-️2. Algoritma Lingkaran (Midpoint Circle Algorithm)
-
-Digunakan untuk menggambar:
+Digunakan untuk membuat bentuk lingkaran seperti:
 
 Matahari
 
-Awan
+Bagian awan
 
 Kepala bunga
 
-3. Algoritma Poligon
+Menggunakan konsep simetri 8 arah untuk menggambar lingkaran secara efisien.
 
-Digunakan untuk membentuk:
+ Mendukung fill=True untuk mengisi area lingkaran.
 
-Badan rumah
+3. Poligon dan Polygon Fill (Scanline sederhana)
 
-Atap rumah
+Digunakan untuk membuat:
 
-Daratan
+Atap rumah (segitiga)
 
-Danau
+Badan rumah (persegi panjang)
 
-Pengisian warna poligon dilakukan menggunakan scan line algorithm sederhana.
+Danau (poligon besar)
 
-4. Transformasi Geometris 2D
+Daratan (poligon)
 
-Aplikasi ini menerapkan beberapa transformasi geometris, yaitu:
+Fill dilakukan dengan metode scanline: mencari perpotongan garis pada setiap y lalu mengisi antara x_min dan x_max.
 
-Translasi → Pergerakan awan
+ Transformasi Geometri
 
-Rotasi → Perputaran sinar matahari
+Project ini juga menerapkan transformasi 2D berikut:
+Translasi (awan bergerak menggunakan offset)
+Skala (Scaling) (rumah & bunga bisa zoom in dengan pivot)
+Rotasi (sinar matahari berputar berdasarkan sun_rotation)
+Refleksi terhadap sumbu Y (refleksi rumah dan bunga pada danau)
+Animasi pada Scene
 
-Skala → Pembesaran rumah dan bunga menggunakan input keyboard
+Animasi berjalan dengan after() dari Tkinter:
 
-Refleksi → Bayangan rumah dan bunga di permukaan danau dan daratan
+Awan bergerak: cloud_offset bertambah setiap frame
 
-- Kontrol Keyboard
-Tombol	Fungsi
-SPACE	Memperbesar objek (skala)
-R	Mengembalikan ukuran objek ke semula
+Sinar matahari berputar: sun_rotation bertambah setiap frame
 
-- Teknologi yang Digunakan
+Program melakukan render ulang pixel setiap loop animasi.
 
-Python 3
+Loop animasi:
 
-Tkinter
-
-Algoritma Grafika Komputer Manual
-
-- Cara Menjalankan Program
-
-Pastikan Python 3 sudah terinstall
-
-Clone repository ini:
-
-git clone https://github.com/mufidakhoirina/grafika_komputer
-
-Masuk ke folder project:
-
-cd nama-repository
-
-Jalankan program:
-
-python mini_scene_2d.py
+self.after_id = self.root.after(1, self.animate)
